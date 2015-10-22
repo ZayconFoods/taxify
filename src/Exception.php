@@ -6,7 +6,7 @@
  * Time: 11:10 AM
  */
 
-namespace ZayconTaxify;
+namespace ZayconDev;
 
 class Exception extends \Exception {
 

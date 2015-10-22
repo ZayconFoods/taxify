@@ -8,7 +8,7 @@
 
 spl_autoload_register(function($class)
 {
-	$class = str_replace('ZayconTaxify\\', '', $class);
+	$class = str_replace('ZayconDev\\', '', $class);
 
 	if (file_exists(__DIR__.'/'.$class.'.php'))
 	{

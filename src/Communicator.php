@@ -6,7 +6,7 @@
  * Time: 10:56 AM
  */
 
-namespace ZayconTaxify;
+namespace ZayconDev;
 
 class Communicator {
 
