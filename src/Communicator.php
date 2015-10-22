@@ -43,6 +43,9 @@ class Communicator {
 
 		$json = json_encode( $envelope );
 
+		$this->taxify->printDebugInfo( 'Envelope', $envelope );
+		$this->taxify->printDebugInfo( 'JSON', $json );
+
 		$ch = curl_init();
 
 		curl_setopt_array( $ch, array(
@@ -60,6 +63,8 @@ class Communicator {
 		$result = curl_exec( $ch );
 		$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 		curl_close( $ch );
+
+		$this->taxify->printDebugInfo( 'Result', $result );
 
 		if ( $http_code != 200 )
 		{

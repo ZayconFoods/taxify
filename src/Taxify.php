@@ -118,5 +118,17 @@ class Taxify {
 		return $this;
 	}
 
-
+	/**
+	 * @param $title
+	 * @param $data
+	 */
+	public function printDebugInfo( $title, $data )
+	{
+		if ( $this->debug_mode == TRUE )
+		{
+			echo '<h2>&lt;' . $title . '&gt;</h2>' . "\r\n";
+			var_dump( $data );
+			echo '<h2>&lt;/' . $title . '&gt;</h2>' . "\r\n";
+		}
+	}
 }
