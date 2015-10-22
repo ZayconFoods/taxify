@@ -11,4 +11,4 @@ ini_set( 'display_errors', 1 );
 
 require_once( dirname( __DIR__ ) . '/src/taxify_required.php' );
 
-define( 'API_KEY', '[YOUR_API_KEY]');
+define( 'API_KEY', '[YOUR API KEY]');
