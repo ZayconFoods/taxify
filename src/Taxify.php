@@ -11,7 +11,7 @@ namespace ZayconTaxify;
 class Taxify {
 
 	const DEV_URL = 'https://ws-test.shipcompliant.com/taxify/1.1/core/JSONservice.asmx/';
-	const PROD_URL = 'https://shipcompliant.com/taxify/1.1/core/JSONservice.asmx/';
+	const PROD_URL = 'https://ws.taxify.co/taxify/1.1/core/JSONService.asmx/';
 	const DEV_ENV_NAME = 'DEV';
 	const PROD_ENV_NAME = 'PROD';
 
@@ -54,11 +54,6 @@ class Taxify {
 	public function getEnvironment()
 	{
 		return ($this->url == self::PROD_URL) ? self::PROD_ENV_NAME : self::DEV_ENV_NAME;
-	}
-
-	public function getVersion()
-	{
-
 	}
 
 	/**
