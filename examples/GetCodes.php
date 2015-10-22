@@ -15,7 +15,7 @@ try
 	$code_types = $account->getCodes( 'Item' );
 	var_dump( $code_types );
 }
-catch ( \ZayconTaxify\Exception $e )
+catch ( ZayconTaxify\Exception $e )
 {
 	var_dump( $e );
 }
