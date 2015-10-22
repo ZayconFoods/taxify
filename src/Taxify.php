@@ -56,6 +56,11 @@ class Taxify {
 		return ($this->url == self::PROD_URL) ? self::PROD_ENV_NAME : self::DEV_ENV_NAME;
 	}
 
+	public function getVersion()
+	{
+
+	}
+
 	/**
 	 * @return mixed
 	 */
@@ -83,6 +88,5 @@ class Taxify {
 	{
 		return $this->url;
 	}
-
 
 }
