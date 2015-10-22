@@ -80,9 +80,14 @@ class Communicator {
 
 		$array = $array['d'];
 
-		if ( isset( $array['Errors'] ) && count( $array['Errors'] ) > 0 )
+		if ( ! isset( $array['ResponseStatus'] ) || $array['ResponseStatus'] != 1 )
 		{
-			throw new Exception( $array['Errors'][0]['Message'], $array['Errors'][0]['Code'] );
+			if ( isset( $array['Errors'] ) && count( $array['Errors'] ) > 0 )
+			{
+				throw new Exception( $array['Errors'][0]['Message'], $array['Errors'][0]['Code'] );
+			}
+
+			throw new Exception( 'Unknown Error' );
 		}
 
 		return $array;
