@@ -6,7 +6,7 @@
  * Time: 10:56 AM
  */
 
-namespace ZayconDev;
+namespace ZayconTaxify;
 
 class Communicator {
 
@@ -23,19 +23,32 @@ class Communicator {
 
 	/**
 	 * @param $service
-	 * @param $json
+	 * @param $data
 	 *
 	 * @return mixed
 	 * @throws Exception
 	 */
-	public function call( $service, $json ) {
+	public function call( $service, $data ) {
+
+		$envelope = array(
+			$service => array_merge(
+				array(
+					'Security' => array(
+						'Password' => $this->taxify->getApiKey()
+					)
+				),
+				$data
+			)
+		);
+
+		$json = json_encode( $envelope );
 
 		$ch = curl_init();
 
 		curl_setopt_array( $ch, array(
 			CURLOPT_URL => $this->taxify->getUrl() . $service,
 			CURLOPT_RETURNTRANSFER => TRUE,
-			CURLOPT_HEADER => TRUE,
+			CURLOPT_HEADER => FALSE,
 			CURLOPT_POST => TRUE,
 			CURLOPT_POSTFIELDS => $json,
 			CURLOPT_HTTPHEADER => array(
@@ -50,9 +63,23 @@ class Communicator {
 
 		if ( $http_code != 200 )
 		{
-			throw new Exception ( Exception::ERROR_COMMUNICATION . ' (' . $this->taxify->getUrl() . ')' );
+			throw new Exception ( Exception::ERROR_COMMUNICATION . ' (' . $this->taxify->getUrl() . $service . ')' );
 		}
 
-		return $result;
+		$array = json_decode( $result, TRUE );
+
+		if ( ! array_key_exists( 'd', $array ) )
+		{
+			throw new Exception ( Exception::ERROR_CALL );
+		}
+
+		$array = $array['d'];
+
+		if ( isset( $array['Errors'] ) && count( $array['Errors'] ) > 0 )
+		{
+			throw new Exception( $array['Errors'][0]['Message'], $array['Errors'][0]['Code'] );
+		}
+
+		return $array;
 	}
 }

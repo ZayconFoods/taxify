@@ -6,11 +6,12 @@
  * Time: 11:10 AM
  */
 
-namespace ZayconDev;
+namespace ZayconTaxify;
 
 class Exception extends \Exception {
 
 	const ERROR_COMMUNICATION = 'Communication error with the server';
+	const ERROR_CALL = 'There was a problem with the server call';
 
 	function __construct( $message, $code=0, \Exception $previous=NULL) {
 

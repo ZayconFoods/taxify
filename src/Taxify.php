@@ -6,7 +6,7 @@
  * Time: 10:31 AM
  */
 
-namespace ZayconDev;
+namespace ZayconTaxify;
 
 class Taxify {
 
