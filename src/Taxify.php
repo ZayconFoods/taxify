@@ -17,17 +17,21 @@ class Taxify {
 
 	private $url;
 	private $api_key;
+	private $debug_mode = FALSE;
 
 	/**
 	 * @param null $api_key
 	 * @param bool|FALSE $use_prod
+	 * @param bool|FALSE $debug_mode
 	 */
-	function __construct( $api_key=NULL, $use_prod=FALSE ) {
+	function __construct( $api_key=NULL, $use_prod=FALSE, $debug_mode=FALSE ) {
 
 		if ( $api_key !== NULL )
 		{
 			$this->setApiKey( $api_key );
 		}
+
+		$this->setDebugMode( $debug_mode );
 
 		$this->url = ( $use_prod === TRUE ) ? self::PROD_URL : self::DEV_URL;
 	}
@@ -83,5 +87,36 @@ class Taxify {
 	{
 		return $this->url;
 	}
+
+	/**
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	public static function toString( $string )
+	{
+		return ($string === NULL) ? '' : $string;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isDebugMode()
+	{
+		return $this->debug_mode;
+	}
+
+	/**
+	 * @param boolean $debug_mode
+	 *
+	 * @return Taxify
+	 */
+	public function setDebugMode( $debug_mode )
+	{
+		$this->debug_mode = ($debug_mode === TRUE) ? TRUE : FALSE;
+
+		return $this;
+	}
+
 
 }
