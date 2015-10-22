@@ -10,7 +10,7 @@ require_once( 'config.php' );
 
 try
 {
-	$taxify = new ZayconTaxify\Taxify( API_KEY );
+	$taxify = new ZayconTaxify\Taxify( API_KEY, FALSE, TRUE );
 	$account = new ZayconTaxify\Account( $taxify );
 	$code_types = $account->getCodes( 'Item' );
 	var_dump( $code_types );
