@@ -10,6 +10,9 @@ namespace ZayconTaxify;
 
 class Communicator {
 
+	const ERROR_COMMUNICATION = 'Communication error with the server';
+	const ERROR_CALL = 'There was a problem with the server call';
+
 	/** @var Taxify $taxify */
 	private $taxify;
 
@@ -68,14 +71,14 @@ class Communicator {
 
 		if ( $http_code != 200 )
 		{
-			throw new Exception ( Exception::ERROR_COMMUNICATION . ' (' . $this->taxify->getUrl() . $service . ')' );
+			throw new Exception ( self::ERROR_COMMUNICATION . ' (' . $this->taxify->getUrl() . $service . ')' );
 		}
 
 		$array = json_decode( $result, TRUE );
 
 		if ( ! array_key_exists( 'd', $array ) )
 		{
-			throw new Exception ( Exception::ERROR_CALL );
+			throw new Exception ( self::ERROR_CALL );
 		}
 
 		$array = $array['d'];
