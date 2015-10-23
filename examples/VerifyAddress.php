@@ -10,7 +10,10 @@ require_once( 'config.php' );
 
 try
 {
-	$taxify = new ZayconTaxify\Taxify( API_KEY, FALSE, TRUE );
+	/* initialize taxify */
+	$taxify = new ZayconTaxify\Taxify( API_KEY, ZayconTaxify\Taxify::ENV_DEV, TRUE );
+
+	/* address */
 	$address = new ZayconTaxify\Address( $taxify );
 	$address
 		->setStreet1( '16201 E Indiana St' ) /* should change St to Ave */

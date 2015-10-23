@@ -10,7 +10,8 @@ require_once( 'config.php' );
 
 try
 {
-	$taxify = new ZayconTaxify\Taxify( API_KEY, FALSE, TRUE );
+	/* initialize taxify */
+	$taxify = new ZayconTaxify\Taxify( API_KEY, ZayconTaxify\Taxify::ENV_DEV, TRUE );
 
 	/* address */
 	$destination_address = new ZayconTaxify\Address();

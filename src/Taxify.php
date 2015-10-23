@@ -12,19 +12,20 @@ class Taxify {
 
 	const DEV_URL = 'https://ws-test.shipcompliant.com/taxify/1.1/core/JSONservice.asmx/';
 	const PROD_URL = 'https://ws.taxify.co/taxify/1.1/core/JSONService.asmx/';
-	const DEV_ENV_NAME = 'DEV';
-	const PROD_ENV_NAME = 'PROD';
+	const ENV_DEV = 'DEV';
+	const ENV_PROD = 'PROD';
 
+	private $environment;
 	private $url;
 	private $api_key;
 	private $debug_mode = FALSE;
 
 	/**
 	 * @param null $api_key
-	 * @param bool|FALSE $use_prod
+	 * @param null $environment
 	 * @param bool|FALSE $debug_mode
 	 */
-	function __construct( $api_key=NULL, $use_prod=FALSE, $debug_mode=FALSE ) {
+	function __construct( $api_key=NULL, $environment=NULL, $debug_mode=FALSE ) {
 
 		if ( $api_key !== NULL )
 		{
@@ -32,8 +33,8 @@ class Taxify {
 		}
 
 		$this->setDebugMode( $debug_mode );
-
-		$this->url = ( $use_prod === TRUE ) ? self::PROD_URL : self::DEV_URL;
+		$this->environment = ( $environment == self::ENV_PROD ) ? self::ENV_PROD : self::ENV_DEV;
+		$this->url = ( $this->isProd() ) ? self::PROD_URL : self::DEV_URL;
 	}
 
 	/**
@@ -41,7 +42,7 @@ class Taxify {
 	 */
 	public function isProd()
 	{
-		return $this->url == self::PROD_URL;
+		return $this->environment == self::ENV_PROD;
 	}
 
 	/**
@@ -49,15 +50,27 @@ class Taxify {
 	 */
 	public function isDev()
 	{
-		return $this->url == self::DEV_URL;
+		return $this->environment == self::ENV_DEV;
 	}
 
 	/**
-	 * @return string
+	 * @return mixed
 	 */
 	public function getEnvironment()
 	{
-		return ($this->url == self::PROD_URL) ? self::PROD_ENV_NAME : self::DEV_ENV_NAME;
+		return $this->environment;
+	}
+
+	/**
+	 * @param mixed $environment
+	 *
+	 * @return Taxify
+	 */
+	public function setEnvironment( $environment )
+	{
+		$this->environment = ( $environment == self::ENV_PROD) ? self::ENV_PROD : self::ENV_DEV;
+
+		return $this;
 	}
 
 	/**
