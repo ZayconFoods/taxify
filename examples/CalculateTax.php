@@ -22,7 +22,7 @@ try
 		->setPostalCode( '99216' );
 
 	/* line */
-	$line = new ZayconTaxify\TaxRequestLine();
+	$line = new ZayconTaxify\TaxLine();
 	$line
 		->setQuantity( 1 )
 		->setItemKey( 'SKU001' )

@@ -8,7 +8,7 @@
 
 namespace ZayconTaxify;
 
-class TaxRequestLine {
+class TaxLine {
 
 	private $line_number;
 	private $item_key;

@@ -46,7 +46,7 @@ class Tax {
 	/** @var Discount[] $discounts */
 	private $discounts;
 
-	/** @var TaxRequestLine[] $lines */
+	/** @var TaxLine[] $lines */
 	private $lines;
 
 	/**
@@ -129,8 +129,7 @@ class Tax {
 
 		$communicator = new Communicator( $this->taxify );
 		$return = $communicator->call( self::CALL_CALCULATE_TAX, $data );
-
-		return $return;
+		return new TaxResponse( $return );
 	}
 
 	public function cancelTax()
@@ -455,7 +454,7 @@ class Tax {
 	}
 
 	/**
-	 * @return TaxRequestLine[]
+	 * @return TaxLine[]
 	 */
 	public function getLines()
 	{
@@ -463,9 +462,9 @@ class Tax {
 	}
 
 	/**
-	 * @param TaxRequestLine $line
+	 * @param TaxLine $line
 	 */
-	public function addLine( TaxRequestLine $line )
+	public function addLine( TaxLine $line )
 	{
 		$this->lines[] = $line;
 	}

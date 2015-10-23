@@ -95,6 +95,34 @@ class Address {
 		return $data;
 	}
 
+	/**
+	 * @param array $data
+	 */
+	public function loadFromArray( array $data )
+	{
+		foreach ( $data as $key => $val )
+		{
+			if ( $key != 'ExtendedProperties' )
+			{
+				$method = 'set' . $key;
+				if ( method_exists( $this, $method ) )
+				{
+					$this->$method ( $val );
+				}
+			}
+		}
+
+		if ( array_key_exists( 'ExtendedProperties', $data ) )
+		{
+			$this->extended_properties = array();
+
+			foreach ( $data['ExtendedProperties'] as $key => $val )
+			{
+				$this->extended_properties[] = new ExtendedProperty( $key, $val );
+			}
+		}
+	}
+
 	public function verifyAddress()
 	{
 		if ( $this->taxify === NULL )
@@ -728,15 +756,38 @@ class Address {
 	}
 
 	/**
-	 * @param ExtendedProperty[] $extended_properties
 	 *
-	 * @return Address
 	 */
-	public function setExtendedProperties( $extended_properties )
+	public function clearExtendedProperties()
 	{
-		$this->extended_properties = $extended_properties;
+		$this->extended_properties = NULL;
+	}
 
-		return $this;
+	/**
+	 * @param $key
+	 * @param $val
+	 */
+	public function addExtendedProperty( $key, $val )
+	{
+		if ( $this->extended_properties === NULL )
+		{
+			$this->extended_properties = array();
+		}
+		$this->extended_properties[] = new ExtendedProperty( $key, $val );
+	}
+
+	/**
+	 * @param $index
+	 */
+	public function removeExtendedProperty( $index )
+	{
+		if ( $this->extended_properties !== NULL )
+		{
+			if ( array_key_exists( $index, $this->extended_properties ) )
+			{
+				unset( $this->extended_properties[ $index ] );
+			}
+		}
 	}
 
 	/**
