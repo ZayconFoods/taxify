@@ -10,8 +10,12 @@ namespace ZayconTaxify;
 
 class Address {
 
+	const CALL_VERIFY_ADDRESS = 'VerifyAddress';
+
 	const VALIDATION_SUCCESS = 'Validated';
 	const VALIDATION_FAILURE = 'NotValidated';
+
+	const ERROR_TAXIFY_OBJ_NOT_PRESENT = 'You must initialize with a Taxify object to perform this call';
 
 	/** @var Taxify $taxify  */
 	private $taxify;
@@ -61,18 +65,16 @@ class Address {
 	/**
 	 * @param Taxify $taxify
 	 */
-	function __construct ( Taxify &$taxify)
+	function __construct ( Taxify &$taxify=NULL )
 	{
 		$this->taxify = $taxify;
 	}
 
-	public function verifyAddress()
+	/**
+	 * @return array
+	 */
+	public function toArray()
 	{
-		$this->is_validated = FALSE;
-		$this->validation_status = NULL;
-		$this->original_address = clone $this;
-		$this->original_address->clearObjectProperties();
-
 		$data = array(
 			'Street1' => Taxify::toString( $this->street1 ),
 			'Street2' => Taxify::toString( $this->street2 ),
@@ -86,17 +88,27 @@ class Address {
 		{
 			foreach ( $this->tax_request_options as $tax_request_option )
 			{
-				$data['Request']['Options'][] = array(
-					'TaxRequestOption' => array(
-						'Key'   => $tax_request_option->getKey(),
-						'Value' => $tax_request_option->getValue()
-					)
-				);
+				$data['Request']['Options'][] = $tax_request_option->toArray();
 			}
 		}
 
+		return $data;
+	}
+
+	public function verifyAddress()
+	{
+		if ( $this->taxify === NULL )
+		{
+			throw new Exception( self::ERROR_TAXIFY_OBJ_NOT_PRESENT );
+		}
+
+		$this->is_validated = FALSE;
+		$this->validation_status = NULL;
+		$this->original_address = clone $this;
+		$this->original_address->clearObjectProperties();
+
 		$communicator = new Communicator( $this->taxify );
-		$return = $communicator->call( 'VerifyAddress', $data );
+		$return = $communicator->call( self::CALL_VERIFY_ADDRESS, $this->toArray() );
 
 		$this->validation_status = ( $return['Address']['ValidationStatus'] == self::VALIDATION_SUCCESS ) ? self::VALIDATION_SUCCESS : self::VALIDATION_FAILURE;
 		$this->is_validated = ($this->validation_status == self::VALIDATION_SUCCESS);
@@ -770,6 +782,33 @@ class Address {
 		}
 
 		return $this;
+	}
+
+	/**
+	 * @param TaxRequestOption $tax_request_option
+	 */
+	public function addTaxRequestOption( TaxRequestOption $tax_request_option )
+	{
+		$this->tax_request_options[] = $tax_request_option;
+	}
+
+	/**
+	 * @param $index
+	 */
+	public function removeTaxRequestOption( $index )
+	{
+		if ( array_key_exists( $index, $this->tax_request_options ) )
+		{
+			unset( $this->tax_request_options[$index] );
+		}
+	}
+
+	/**
+	 *
+	 */
+	public function removeAllTaxRequestOptions()
+	{
+		$this->tax_request_options = NULL;
 	}
 
 	/**

@@ -24,6 +24,19 @@ class TaxRequestOption {
 	}
 
 	/**
+	 * @return array
+	 */
+	public function toArray()
+	{
+		return array(
+			'TaxRequestOption' => array(
+				'Key' => Taxify::toString( $this->key ),
+				'Value' => Taxify::toString( $this->value)
+			)
+		);
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public function getKey()

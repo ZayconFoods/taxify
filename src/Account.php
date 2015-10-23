@@ -10,6 +10,8 @@ namespace ZayconTaxify;
 
 class Account {
 
+	const CALL_GET_CODES = 'GetCodes';
+
 	private $code_type;
 
 	/** @var TaxRequestOption[] $tax_request_options */
@@ -60,7 +62,7 @@ class Account {
 		}
 
 		$communicator = new Communicator( $this->taxify );
-		$return = $communicator->call( 'GetCodes', $data );
+		$return = $communicator->call( self::CALL_GET_CODES, $data );
 
 		$this->codes = array();
 		$this->setCodeType( $return['CodeType'] );
