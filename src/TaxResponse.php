@@ -17,7 +17,7 @@ class TaxResponse {
 	/** @var Address $destination_address */
 	private $destination_address;
 
-	/** @var Address $origin_address  */
+	/** @var Address $origin_address */
 	private $origin_address;
 
 	/** @var TaxJurisdiction[] $tax_jurisdictions */
