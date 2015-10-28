@@ -518,6 +518,11 @@ class Tax {
 	 */
 	public function addLine( TaxLine $line )
 	{
+		if ($this->getLineCount() == 0)
+		{
+			$this->lines = array();
+		}
+
 		$this->lines[] = $line;
 	}
 
@@ -538,6 +543,14 @@ class Tax {
 	public function removeAllLines()
 	{
 		$this->lines = NULL;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLineCount()
+	{
+		return ( $this->lines === NULL ) ? 0 : count( $this->lines );
 	}
 
 	/**
