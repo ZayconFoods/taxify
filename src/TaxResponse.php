@@ -59,8 +59,6 @@ class TaxResponse extends TaxifyBaseClass {
 	 */
 	public function loadFromArray( array $data )
 	{
-		var_dump($data);
-
 		$this
 			->setDocumentKey( $data['DocumentKey'] )
 			->setSalesTaxAmount( $data['SalesTaxAmount'] )
