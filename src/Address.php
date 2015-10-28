@@ -8,7 +8,7 @@
 
 namespace ZayconTaxify;
 
-class Address {
+class Address extends TaxifyBaseClass {
 
 	const CALL_VERIFY_ADDRESS = 'VerifyAddress';
 
@@ -55,9 +55,6 @@ class Address {
 
 	/** @var Address $original_address */
 	private $original_address;
-
-	/** @var ExtendedProperty[] $extended_properties */
-	private $extended_properties;
 
 	/** @var Address[] $address_suggestions */
 	private $address_suggestions;
@@ -112,7 +109,7 @@ class Address {
 			}
 		}
 
-		if ( array_key_exists( 'ExtendedProperties', $data ) )
+		if ( array_key_exists( 'ExtendedProperties', $data ) && $data['ExtendedProperties'] !== NULL )
 		{
 			$this->extended_properties = array();
 
@@ -745,49 +742,6 @@ class Address {
 		$this->suite_number = $suite_number;
 
 		return $this;
-	}
-
-	/**
-	 * @return ExtendedProperty[]
-	 */
-	public function getExtendedProperties()
-	{
-		return $this->extended_properties;
-	}
-
-	/**
-	 *
-	 */
-	public function clearExtendedProperties()
-	{
-		$this->extended_properties = NULL;
-	}
-
-	/**
-	 * @param $key
-	 * @param $val
-	 */
-	public function addExtendedProperty( $key, $val )
-	{
-		if ( $this->extended_properties === NULL )
-		{
-			$this->extended_properties = array();
-		}
-		$this->extended_properties[] = new ExtendedProperty( $key, $val );
-	}
-
-	/**
-	 * @param $index
-	 */
-	public function removeExtendedProperty( $index )
-	{
-		if ( $this->extended_properties !== NULL )
-		{
-			if ( array_key_exists( $index, $this->extended_properties ) )
-			{
-				unset( $this->extended_properties[ $index ] );
-			}
-		}
 	}
 
 	/**

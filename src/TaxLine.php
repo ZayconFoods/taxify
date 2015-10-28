@@ -8,7 +8,7 @@
 
 namespace ZayconTaxify;
 
-class TaxLine {
+class TaxLine extends TaxifyBaseClass {
 
 	private $line_number;
 	private $item_key;
@@ -19,9 +19,29 @@ class TaxLine {
 	private $item_taxability_code;
 	private $item_categories;
 	private $item_tags;
+	private $amount;
+	private $exempt_amount;
+	private $tax_rate;
+	private $sales_tax_amount;
 
 	/** @var TaxRequestOption[] $tax_request_options  */
 	private $tax_request_options;
+
+	/**
+	 * @param array|NULL $data
+	 */
+	function __construct( array $data=NULL )
+	{
+		$this
+			->setLineNumber( $data['LineNumber'] )
+			->setItemKey( $data['ItemKey'] )
+			->setItemTaxabilityCode( $data['ItemTaxabilityCode'] )
+			->setAmount( $data['Amount'] )
+			->setExemptAmount( $data['ExemptAmount'] )
+			->setTaxRate( $data['TaxRate'] )
+			->setSalesTaxAmount( $data['SalesTaxAmount'] )
+			->setExtendedProperties( $data['ExtendedProperties'] );
+	}
 
 	/**
 	 * @return array
@@ -230,6 +250,86 @@ class TaxLine {
 	public function setItemTags( $item_tags )
 	{
 		$this->item_tags = $item_tags;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getAmount()
+	{
+		return $this->amount;
+	}
+
+	/**
+	 * @param mixed $amount
+	 *
+	 * @return TaxLine
+	 */
+	public function setAmount( $amount )
+	{
+		$this->amount = $amount;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSalesTaxAmount()
+	{
+		return $this->sales_tax_amount;
+	}
+
+	/**
+	 * @param mixed $sales_tax_amount
+	 *
+	 * @return TaxLine
+	 */
+	public function setSalesTaxAmount( $sales_tax_amount )
+	{
+		$this->sales_tax_amount = $sales_tax_amount;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getExemptAmount()
+	{
+		return $this->exempt_amount;
+	}
+
+	/**
+	 * @param mixed $exempt_amount
+	 *
+	 * @return TaxLine
+	 */
+	public function setExemptAmount( $exempt_amount )
+	{
+		$this->exempt_amount = $exempt_amount;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTaxRate()
+	{
+		return $this->tax_rate;
+	}
+
+	/**
+	 * @param mixed $tax_rate
+	 *
+	 * @return TaxLine
+	 */
+	public function setTaxRate( $tax_rate )
+	{
+		$this->tax_rate = $tax_rate;
 
 		return $this;
 	}

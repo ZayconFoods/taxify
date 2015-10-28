@@ -129,7 +129,7 @@ class Tax {
 
 		$communicator = new Communicator( $this->taxify );
 		$return = $communicator->call( self::CALL_CALCULATE_TAX, $data );
-		return new TaxResponse( $return );
+		return new TaxResponse( json_encode( $return ) );
 	}
 
 	public function cancelTax()
