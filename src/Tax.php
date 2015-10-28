@@ -162,7 +162,7 @@ class Tax {
 
 		$data = array(
 			'DocumentKey' => Taxify::toString( $this->document_key ),
-			'CommittedDocumentKey' => Taxify::toString( $this->committed_document_key )
+			'CommitedDocumentKey' => Taxify::toString( $this->committed_document_key )
 		);
 
 		$communicator = new Communicator( $this->taxify );
