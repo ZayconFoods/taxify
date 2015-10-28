@@ -17,6 +17,7 @@ class TaxResponse extends TaxifyBaseClass {
 	private $effective_tax_date;
 	private $is_committed = FALSE;
 	private $effective_tax_address_type;
+	private $raw_json;
 
 	/** @var Address $destination_address */
 	private $destination_address;
@@ -49,6 +50,7 @@ class TaxResponse extends TaxifyBaseClass {
 	 */
 	public function loadFromJson( $json )
 	{
+		$this->raw_json = $json;
 		$this->loadFromArray( json_decode( $json, TRUE ) );
 	}
 
@@ -239,5 +241,18 @@ class TaxResponse extends TaxifyBaseClass {
 		return $this;
 	}
 
+	/**
+	 * @param bool|FALSE $as_array
+	 *
+	 * @return mixed
+	 */
+	public function getRawJson( $as_array=FALSE )
+	{
+		if ($as_array)
+		{
+			return json_decode( $this->raw_json, TRUE );
+		}
 
+		return $this->raw_json;
+	}
 }
