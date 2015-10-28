@@ -135,7 +135,22 @@ class Tax {
 
 	public function cancelTax()
 	{
+		if ( empty( $this->document_key ) )
+		{
+			throw new Exception ( self::ERROR_NO_DOCUMENT_KEY );
+		}
 
+		$data = array(
+			'DocumentKey' => Taxify::toString( $this->document_key )
+		);
+
+		$communicator = new Communicator( $this->taxify );
+		$return = $communicator->call( self::CALL_CANCEL_TAX, $data );
+		$tax_response =  new TaxResponse;
+		$tax_response->setResponseStatus( 1 );
+		$tax_response->setExtendedProperties( $return['ExtendedProperties'] );
+
+		return $tax_response;
 	}
 
 	public function commitTax()

@@ -12,6 +12,13 @@ try
 {
 	/* initialize taxify */
 	$taxify = new ZayconTaxify\Taxify( API_KEY, ZayconTaxify\Taxify::ENV_DEV, TRUE );
+
+	/* tax */
+	$tax = new ZayconTaxify\Tax( $taxify );
+	$tax->setDocumentKey( 'Order001' );
+	$tax_response = $tax->cancelTax();
+
+	var_dump( $tax_response );
 }
 catch ( ZayconTaxify\Exception $e )
 {
