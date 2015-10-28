@@ -1,17 +1,18 @@
 # ZayconTaxify
-### Connect your website with Taxify's API
+Connect your website with Taxify's API
+Developed by [Zaycon Fresh](https://www.zayconfresh.com)
 
-# CalculateTax
+### CalculateTax
 Coming Soon
 
-#CommitTax
+### CommitTax
 Coming Soon
 
-#CancelTax
+### CancelTax
 Coming Soon
 
-#VerifyAddress
+### VerifyAddress
 Coming Soon
 
-#GetCodes
+### GetCodes
 Coming Soon
