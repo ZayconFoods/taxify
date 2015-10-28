@@ -242,6 +242,22 @@ class TaxResponse extends TaxifyBaseClass {
 	}
 
 	/**
+	 * @return TaxJurisdiction[]
+	 */
+	public function getTaxJurisdictions()
+	{
+		return $this->tax_jurisdictions;
+	}
+
+	/**
+	 * @return TaxLine[]
+	 */
+	public function getLines()
+	{
+		return $this->lines;
+	}
+
+	/**
 	 * @param bool|FALSE $as_array
 	 *
 	 * @return mixed
