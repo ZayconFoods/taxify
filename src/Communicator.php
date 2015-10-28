@@ -31,8 +31,8 @@ class Communicator {
 	 * @return mixed
 	 * @throws Exception
 	 */
-	public function call( $service, $data ) {
-
+	public function call( $service, $data )
+	{
 		$envelope = array(
 			$service => array_merge(
 				array(

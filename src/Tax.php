@@ -25,6 +25,7 @@ class Tax {
 	private $taxify;
 
 	private $document_key;
+	private $committed_document_key;
 	private $tax_date;
 	private $is_committed = FALSE;
 	private $customer_key;
@@ -139,7 +140,23 @@ class Tax {
 
 	public function commitTax()
 	{
+		if ( empty( $this->document_key ) )
+		{
+			throw new Exception ( self::ERROR_NO_DOCUMENT_KEY );
+		}
 
+		$data = array(
+			'DocumentKey' => Taxify::toString( $this->document_key ),
+			'CommittedDocumentKey' => Taxify::toString( $this->committed_document_key )
+		);
+
+		$communicator = new Communicator( $this->taxify );
+		$return = $communicator->call( self::CALL_COMMIT_TAX, $data );
+		$tax_response =  new TaxResponse;
+		$tax_response->setResponseStatus( 1 );
+		$tax_response->setExtendedProperties( $return['ExtendedProperties'] );
+
+		return $tax_response;
 	}
 
 	/**
@@ -158,6 +175,26 @@ class Tax {
 	public function setDocumentKey( $document_key )
 	{
 		$this->document_key = $document_key;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCommittedDocumentKey()
+	{
+		return $this->committed_document_key;
+	}
+
+	/**
+	 * @param mixed $committed_document_key
+	 *
+	 * @return Tax
+	 */
+	public function setCommittedDocumentKey( $committed_document_key )
+	{
+		$this->committed_document_key = $committed_document_key;
 
 		return $this;
 	}
