@@ -83,7 +83,7 @@ class Tax {
 		$data = array(
 			'DocumentKey' => Taxify::toString( $this->document_key ),
 			'TaxDate' => ( empty( $this->tax_date ) ) ? date('Y-m-d') : $this->tax_date,
-			'IsCommitted' => $this->is_committed,
+			'IsCommited' => $this->is_committed,
 			'CustomerKey' => Taxify::toString( $this->customer_key ),
 			'CustomerTaxabilityCode' => Taxify::toString( $this->customer_taxability_code ),
 			'CustomerRegistrationNumber' => Taxify::toString( $this->customer_registration_number ),
