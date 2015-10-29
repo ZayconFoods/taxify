@@ -128,7 +128,7 @@ class TaxLine extends TaxifyBaseClass {
 	public function setActualExtendedPrice( $actual_extended_price )
 	{
 		$actual_extended_price = preg_replace('/[^0-9.-]*/', '', $actual_extended_price);
-		$this->quantity = ( is_numeric( $actual_extended_price ) ) ? $actual_extended_price : 0;
+		$this->actual_extended_price = ( is_numeric( $actual_extended_price ) ) ? $actual_extended_price : 0;
 
 		return $this;
 	}
