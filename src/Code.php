@@ -10,6 +10,14 @@ namespace ZayconTaxify;
 
 class Code {
 
+	/** You account codes may be different, these are just the defaults */
+	const CODE_CLOTHING = 'CLOTHING';
+	const CODE_FOOD = 'FOOD';
+	const CODE_FREIGHT = 'FREIGHT';
+	const CODE_NONTAX = 'NONTAX';
+	const CODE_TAXABLE = 'TAXABLE';
+	const CODE_WINE = 'WINE';
+
 	private $string;
 
 	/**
