@@ -35,7 +35,7 @@ try
 		->setItemKey( 'SKU001' )
 		->setActualExtendedPrice( 100 )
 		->setItemDescription( 'Some Product' )
-		->setItemTaxabilityCode( '' );
+		->setItemTaxabilityCode( ZayconTaxify\Code::CODE_FOOD );
 
 	/* tax */
 	$tax = new ZayconTaxify\Tax( $taxify );
