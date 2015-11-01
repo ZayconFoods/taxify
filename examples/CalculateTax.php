@@ -13,7 +13,14 @@ try
 	/* initialize taxify */
 	$taxify = new ZayconTaxify\Taxify( API_KEY, ZayconTaxify\Taxify::ENV_DEV, TRUE );
 
-	/* address */
+	/* addresses */
+	$origin_address = new ZayconTaxify\Address();
+	$origin_address
+		->setStreet1( '16201 E Indiana Ave' )
+		->setCity( 'Spokane Valley' )
+		->setState( 'WA' )
+		->setPostalCode( '99216' );
+
 	$destination_address = new ZayconTaxify\Address();
 	$destination_address
 		->setStreet1( '16201 E Indiana Ave' )
@@ -36,6 +43,7 @@ try
 		->setDocumentKey( 'Order001' )
 		->setTaxDate( time() )
 		->setIsCommitted( TRUE )
+		->setOriginAddress( $origin_address )
 		->setDestinationAddress( $destination_address )
 		->addLine( $line );
 	$tax_response = $tax->calculateTax();
