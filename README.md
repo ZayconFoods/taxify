@@ -1,6 +1,8 @@
 # ZayconTaxify
 Connect your website with Taxify's API
 
+Version 1.0.0.0
+
 ## Table of Contents
 * [Install](#install)
 * [Documentation](#documentation)
@@ -17,7 +19,7 @@ $taxify = new ZayconTaxify\Taxify( '[YOUR_API_KEY]', ZayconTaxify\Taxify::ENV_DE
 ```
 
 ### Calculate Tax
-```
+```php
 $origin_address = new ZayconTaxify\Address();
 $origin_address
     ->setStreet1( '16201 E Indiana Ave' )

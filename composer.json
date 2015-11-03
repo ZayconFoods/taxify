@@ -1,0 +1,27 @@
+
+{
+  "name": "zaycon/taxify",
+  "description": "Connect your website with Taxify's API.",
+  "version": "1.0.0.0",
+  "homepage": "https://github.com/ZayconFoods/taxify",
+  "license": "MIT",
+  "keywords": ["Taxify", "taxify"],
+  "require": {
+    "php": ">=5.3"
+  },
+  "type": "library",
+  "authors": [
+    {
+      "name": "Tony DeStefano",
+      "email": "tony@zayconfresh.com",
+      "homepage": "https://www.zayconfresh.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Ethan Federman",
+      "email": "ethan@zayconfresh.com",
+      "homepage": "https://www.zayconfresh.com",
+      "role": "Developer"
+    }
+  ],
+}
