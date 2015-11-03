@@ -24,4 +24,9 @@
       "role": "Developer"
     }
   ],
+  "autoload": {
+    "psr-0": {
+      "ZayconTaxify\\": "src/"
+    }
+  }
 }
