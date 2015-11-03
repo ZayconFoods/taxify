@@ -8,8 +8,18 @@ Version 1.0.0.0
 * [Documentation](#documentation)
 * [About](#about)
 
-## <a name="install"></a>Install
-Coming Soon
+## <a name="install"></a>Installation
+
+Add ZayconTaxify to your `composer.json` file. If you are not using [Composer](http://getcomposer.org), you should be. It's an excellent way to manage dependencies in your PHP application.
+
+```json
+{
+  "require": {
+    "zaycon/taxify": "dev-master"
+  }
+}
+```
+
 ## <a name="documentation"></a>Documentation
 
 ### Initialize Your Object
