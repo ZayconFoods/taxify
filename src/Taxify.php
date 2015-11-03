@@ -10,6 +10,8 @@ namespace ZayconTaxify;
 
 class Taxify {
 
+	const VERSION = '1.0.0';
+
 	const DEV_URL = 'https://ws-test.shipcompliant.com/taxify/1.1/core/JSONservice.asmx/';
 	const PROD_URL = 'https://ws.taxify.co/taxify/1.1/core/JSONService.asmx/';
 	const ENV_DEV = 'DEV';
