@@ -3,6 +3,7 @@
 [![Latest Stable Version](https://poser.pugx.org/zaycon/taxify/v/stable)](https://packagist.org/packages/zaycon/taxify)
 [![Total Downloads](https://poser.pugx.org/zaycon/taxify/downloads)](https://packagist.org/packages/zaycon/taxify)
 [![Build Status](https://travis-ci.org/ZayconFoods/taxify.svg?branch=master)](https://travis-ci.org/ZayconFoods/taxify)
+[![Coverage Status](https://coveralls.io/repos/ZayconFoods/taxify/badge.svg?branch=coveralls-test&service=github)](https://coveralls.io/github/ZayconFoods/taxify?branch=coveralls-test)
 
 Connect your website with the [Taxify](https://www.taxify.co) API
 

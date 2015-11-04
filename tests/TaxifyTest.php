@@ -17,7 +17,7 @@ class TaxifyTest extends PHPUnit_Framework_TestCase
 	public function testGetEnvironment()
 	{
 		$taxify = new \ZayconTaxify\Taxify( NULL, \ZayconTaxify\Taxify::ENV_PROD );
-		$this->assertTrue( $taxify->isProd() );
+		$this->assertEquals( \ZayconTaxify\Taxify::ENV_PROD, $taxify->getEnvironment() );
 	}
 
 	/**
@@ -90,6 +90,9 @@ class TaxifyTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($not_null_string, $taxify->toString($not_null_string));
 	}
 
+	/**
+	 * @depends testSetDebugMode
+	 */
 	public function testPrintDebugInfo()
 	{
 		$taxify = new \ZayconTaxify\Taxify( NULL, NULL, TRUE );
@@ -98,5 +101,9 @@ class TaxifyTest extends PHPUnit_Framework_TestCase
 		$data = array();
 
 		$this->assertTrue( $taxify->printDebugInfo( $title, $data ) );
+
+		$taxify->setDebugMode(FALSE);
+
+		$this->assertFalse( $taxify->printDebugInfo( $title, $data ) );
 	}
 }
