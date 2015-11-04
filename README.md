@@ -4,7 +4,7 @@ Connect your website with the [Taxify](https://www.taxify.co) API
 Version 1.0.0.0
 
 ## Table of Contents
-* [Install](#install)
+* [Installation](#install)
 * [Documentation](#documentation)
 * [About](#about)
 
