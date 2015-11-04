@@ -1,8 +1,6 @@
 # ZayconTaxify
 Connect your website with the [Taxify](https://www.taxify.co) API
 
-Version 1.0.0.0
-
 ## Table of Contents
 * [Installation](#install)
 * [Documentation](#documentation)
