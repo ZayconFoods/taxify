@@ -1,4 +1,9 @@
 # ZayconTaxify
+
+[![Latest Stable Version](https://poser.pugx.org/zaycon/taxify/v/stable)](https://packagist.org/packages/zaycon/taxify)
+[![Total Downloads](https://poser.pugx.org/zaycon/taxify/downloads)](https://packagist.org/packages/zaycon/taxify)
+[![Build Status](https://travis-ci.org/ZayconFoods/taxify.svg?branch=master)](https://travis-ci.org/ZayconFoods/taxify)
+
 Connect your website with the [Taxify](https://www.taxify.co) API
 
 ## Table of Contents
