@@ -78,4 +78,25 @@ class TaxifyTest extends PHPUnit_Framework_TestCase
 		$taxify->setDebugMode( TRUE );
 		$this->assertTrue( $taxify->isDebugMode() );
 	}
+
+	public function testToString()
+	{
+		$taxify = new \ZayconTaxify\Taxify();
+
+		$null_string = NULL;
+		$not_null_string = "Hey! I'm a string!";
+
+		$this->assertEquals(NULL, $taxify->toString($null_string));
+		$this->assertEquals($not_null_string, $taxify->toString($not_null_string));
+	}
+
+	public function testPrintDebugInfo()
+	{
+		$taxify = new \ZayconTaxify\Taxify( NULL, NULL, TRUE );
+
+		$title = "Title";
+		$data = [];
+
+		$this->assertTrue( $taxify->printDebugInfo( $title, $data ) );
+	}
 }

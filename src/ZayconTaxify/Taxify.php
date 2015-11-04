@@ -136,6 +136,8 @@ class Taxify {
 	/**
 	 * @param $title
 	 * @param $data
+	 *
+	 * @return bool
 	 */
 	public function printDebugInfo( $title, $data )
 	{
@@ -144,6 +146,10 @@ class Taxify {
 			echo '<h2>&lt;' . $title . '&gt;</h2>' . "\r\n";
 			var_dump( $data );
 			echo '<h2>&lt;/' . $title . '&gt;</h2>' . "\r\n";
+
+			return TRUE;
 		}
+
+		return FALSE;
 	}
 }
