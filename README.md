@@ -1,5 +1,5 @@
 # ZayconTaxify
-Connect your website with Taxify's API
+Connect your website with the [Taxify](https://www.taxify.co) API
 
 Version 1.0.0.0
 
