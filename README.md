@@ -81,7 +81,7 @@ $tax_response = $tax->cancelTax();
 ```php
 $address = new ZayconTaxify\Address( $taxify );
 $address
-	->setStreet1( '1234 Awesome St' ) /* should change St to Ave */
+	->setStreet1( '16201 E Indiana Ave' )
 	->setCity( 'Spokane Valley' )
 	->setState( 'WA' )
 	->setPostalCode( '99216' )
