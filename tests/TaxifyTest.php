@@ -95,7 +95,7 @@ class TaxifyTest extends PHPUnit_Framework_TestCase
 		$taxify = new \ZayconTaxify\Taxify( NULL, NULL, TRUE );
 
 		$title = "Title";
-		$data = [];
+		$data = array();
 
 		$this->assertTrue( $taxify->printDebugInfo( $title, $data ) );
 	}
