@@ -13,7 +13,7 @@ Add ZayconTaxify to your `composer.json` file. If you are not using [Composer](h
 ```json
 {
   "require": {
-    "zaycon/taxify": "dev-master"
+    "zaycon/taxify": "1.0.*"
   }
 }
 ```
