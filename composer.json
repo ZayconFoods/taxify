@@ -2,7 +2,7 @@
 {
   "name": "zaycon/taxify",
   "description": "Connect your website with Taxify's API.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/ZayconFoods/taxify",
   "license": "MIT",
   "keywords": ["Taxify", "taxify"],
