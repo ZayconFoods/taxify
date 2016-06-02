@@ -135,8 +135,8 @@ class Address extends TaxifyBaseClass {
 		$communicator = new Communicator( $this->taxify );
 		$return = $communicator->call( self::CALL_VERIFY_ADDRESS, $this->toArray() );
 
-		$this->validation_status = ( $return['Address']['ValidationStatus'] == self::VALIDATION_SUCCESS ) ? self::VALIDATION_SUCCESS : self::VALIDATION_FAILURE;
-		$this->is_validated = ($this->validation_status == self::VALIDATION_SUCCESS);
+		$this->validation_status = $return['Address']['ValidationStatus'];
+		$this->is_validated = ( $this->validation_status == self::VALIDATION_SUCCESS );
 
 		$this
 			->setFirstName( $return['Address']['FirstName'] )
@@ -826,4 +826,6 @@ class Address extends TaxifyBaseClass {
 		$this->tax_request_options = NULL;
 		$this->extended_properties = NULL;
 	}
+
+
 }
