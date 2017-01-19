@@ -73,6 +73,9 @@ class Address extends TaxifyBaseClass {
 	public function toArray()
 	{
 		$data = array(
+			'FirstName' => Taxify::toString( $this->first_name ),
+			'LastName' => Taxify::toString( $this->last_name ),
+			'Company' => Taxify::toString( $this->company ),
 			'Street1' => Taxify::toString( $this->street1 ),
 			'Street2' => Taxify::toString( $this->street2 ),
 			'City' => Taxify::toString( $this->city ),
